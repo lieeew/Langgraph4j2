@@ -45,6 +45,28 @@
             <artifactId>langchain4j-community-dashscope-spring-boot-starter</artifactId>
             <version>1.1.0-beta7</version>
         </dependency>
+        <dependency>
+            <groupId>org.bsc.langgraph4j</groupId>
+            <artifactId>langgraph4j-core</artifactId>
+            <version>1.6.0-beta5</version>
+        </dependency>
+        <!-- hutool 工具包 -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.16</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <!-- 腾讯云 cos -->
+        <dependency>
+            <groupId>com.qcloud</groupId>
+            <artifactId>cos_api</artifactId>
+            <version>5.6.89</version>
+        </dependency>
     </dependencies>
 
     <build>

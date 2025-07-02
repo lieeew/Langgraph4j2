@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class GenerateImage {
 
-    @Value("langchain4j.community.dashscope.chat-model.api-key")
+    @Value("${langchain4j.community.dashscope.chat-model.api-key}")
     private String dashscopeChatModelApiKey;
 
     /**
@@ -29,11 +29,11 @@ public class GenerateImage {
     public ImageSynthesisResult generateImage(String promote) {
         ImageSynthesisParam param =
                 ImageSynthesisParam.builder()
-                        .apiKey(System.getenv(dashscopeChatModelApiKey))
+                        .apiKey(dashscopeChatModelApiKey)
                         .model("wanx2.1-t2i-turbo")
                         .prompt(promote)
                         .n(1)
-                        .size("300*300")
+                        .size("512*512")
                         .build();
         ImageSynthesis imageSynthesis = new ImageSynthesis();
         ImageSynthesisResult result = null;

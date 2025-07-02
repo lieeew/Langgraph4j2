@@ -20,9 +20,9 @@ import java.io.InputStreamReader;
 public class SearchTool {
     @Tool("get memes from website")
     String searchMemes(@P("keyword to search for memes") String key) {
-        log.info("正在搜索表情包，关键词：{}", key);
         // 实际的工具执行代码
         String url = String.format("https://api.doutub.com/api/bq/getBqlistByKeyword?keyword=%s&curPage=1&pageSize=20", URLUtil.encode(key));
+        log.info("正在搜索 url ：{}", url);
         return HttpUtil.get(url);
     }
 }

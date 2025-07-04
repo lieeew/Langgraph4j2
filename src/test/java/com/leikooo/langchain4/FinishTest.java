@@ -57,7 +57,7 @@ public class FinishTest {
 
     private Langgraph4j2.Content contentData = null;
 
-    private String text1 = """
+    private String text = """
                 早餐价格又涨价了，
                 
                 酸菜包 2.8 元 + 烧麦 2.8 元 + 茶叶蛋 2.5 元 + 豆浆 3.5 元。
@@ -67,7 +67,7 @@ public class FinishTest {
                 另外上海早餐真的是太少了，不是包子就是煎饼果子，太难了
             """;
 
-    private String text = """
+    private String text1 = """
             以下是 **去掉所有 URL 和图片链接后的文本内容**，内容结构、语义和格式均保留，图片替换为空行保留布局：
             
             ---
@@ -264,7 +264,10 @@ public class FinishTest {
                 if (Objects.isNull(contentData)) {
                     return;
                 }
-                contentData.setModifiedText(contentData.getModifiedText().replace("[" + key + "]", urlResponse.getData()));
+                if(contentData.getModifiedText().contains(key)) {
+                    log.info("找到对应的key {} 替换为对应图片的 URL {}", key, String.format("![](%s)", urlResponse.getData()));
+                    contentData.setModifiedText(contentData.getModifiedText().replace("[" + key + "]", String.format("![](%s)", urlResponse.getData())));
+                }
             });
             // 替换文章里面的占位符
             log.error("最终文章的结果：{}", contentData.getModifiedText());
